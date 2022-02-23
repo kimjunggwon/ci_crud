@@ -38,6 +38,14 @@ class Main extends CI_Controller
             $content = $this->input->post('content', TRUE);
             $created_on = $this->input->post('created_on', TRUE);
             $due_date = $this->input->post('due_date', TRUE);
+
+            $this->todo_m->insert_todo($content, $created_on, $due_date);
+
+            redirect('/main/lists/');
+
+            exit;
+        }else{
+            $this->load->view('todo/write_v');
         }
     }
 }
